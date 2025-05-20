@@ -1,11 +1,14 @@
 #include <stdio.h>
 
-double raiz(double x){ //Função do metodo de newton-raphson.
+double raiz(double n, double x){ //Função do metodo de newton-raphson.
+    if (n <= 0){ //Vai dar o valor 0, pois a raiz de 0 é 0.
+        return 0;
+    }
     double y = x;
     double z;
     do{
         z = y;
-        y = 0.5 * (y + 2/y); //Calculo para achar a raiz de 2
+        y = 0.5 * (y + n/y); //Calculo para achar a raiz de um numero n
         if (z != y){
             printf("%.60lf\n", y);
         }
@@ -13,13 +16,17 @@ double raiz(double x){ //Função do metodo de newton-raphson.
 }
 
 int main(){
-    double x;
-    printf("Escolha um número\n");
-    scanf("%lf", &x); //Permitir ao usuario escolher um valor inicial para x.
-    if(x <= 0){ //Não se pode usar números negativos na equação posso se não da a raiz de -2 que não existe nos números reais e quando se põe 0 ele da infinito.
-        printf("Não pode numeros menores ou igual a zero");
+    double x; //Numero inicial para os calculos
+    double n; //Numero da raiz que voce quer calcular
+    printf("Escolha um número para ser calculado a raiz\n");
+    scanf("%lf", &n); //Permitir ao usuario escolher um valor inicial para x.
+    printf("Escolha um valor inicial para chegar na raiz que voce escolheu.\n");
+    scanf("%lf", &x);
+    if(x <= 0){ //Não se pode usar números negativos ou igual a zero para o valor inicial de x pois se nâo da errado a equação.
+        printf("Não pode numeros iniciais menores ou igual a zero");
     } else{
-        raiz (x);
+        double resultado = raiz(n, x);
+        printf("O valor da raiz escolhida é:\n%.60lf\n", resultado);
     }
     return 0;
 }
