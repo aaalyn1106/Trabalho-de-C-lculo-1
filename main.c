@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 double raiz(double n, double x){ //Função do metodo de newton-raphson.
-    if (n <= 0){ //Vai dar o valor 0, pois a raiz de 0 é 0.
+    if (n <= 0){ //Se n for igual a zero o valor da equaçao da 0, pois a raiz de 0 é 0.
         return 0;
     }
     double y = x;
